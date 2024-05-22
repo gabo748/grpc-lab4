@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.grpc";
+option java_outer_classname = "ChatProto";
+
+package chat;
+
+// The chat service definition.
+service ChatService {
+  // Joins a chat room and starts streaming messages.
+  rpc Chat (stream ChatMessage) returns (stream ChatMessage);
+}
+
+// The chat message containing the user's name and message text.
+message ChatMessage {
+  string user = 1;
+  string text = 2;
+}
